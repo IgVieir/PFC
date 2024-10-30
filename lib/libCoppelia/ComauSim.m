@@ -77,6 +77,13 @@ classdef ComauSim
 
         end
 
+        %% Recebe position para as juntas do Comau
+        function Pos = getJointPosition(obj)
+            for i = 1:obj.n_joints
+                Pos(i) = obj.sim.getJointPosition(obj.h_joints(i));
+            end
+
+        end
         %% Define o stepping de comunicacao com o simulador
         function setStepping(obj, flag_in)
             obj.client.setStepping(flag_in);
